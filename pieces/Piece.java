@@ -7,7 +7,7 @@ import game.*;
  * @author Dave 
  *
  */
-public abstract class Piece {
+public abstract class Piece implements Cloneable{
 	
 	int x, y;
 	Colour colour;

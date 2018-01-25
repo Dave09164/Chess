@@ -6,8 +6,8 @@ public class Queen extends Piece {
 
 		Type type;
 		
-		public Queen(int x, int y, Colour c) {
-			super(x,y, c);
+		public Queen(Colour c) {
+			super(c);
 			this.type = Type.QUEEN;
 		}
 		

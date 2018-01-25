@@ -7,8 +7,8 @@ public class Rook extends Piece {
 
 	Type type;
 	
-	public Rook(int x, int y, Colour c) {
-		super(x,y, c);
+	public Rook(Colour c) {
+		super(c);
 		this.type = Type.ROOK;
 	}
 	

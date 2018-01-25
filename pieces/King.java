@@ -6,8 +6,8 @@ public class King extends Piece {
 
 	Type type;
 	
-	public King(int x, int y, Colour c) {
-		super(x,y, c);
+	public King(Colour c) {
+		super(c);
 		this.type = Type.KING;
 	}
 	

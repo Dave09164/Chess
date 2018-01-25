@@ -7,8 +7,8 @@ public class Bishop extends Piece {
 
 	Type type;
 	
-	public Bishop(int x, int y, Colour c) {
-		super(x,y, c);
+	public Bishop(Colour c) {
+		super(c);
 		this.type = Type.BISHOP;
 	}
 	

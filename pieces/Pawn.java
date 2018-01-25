@@ -7,8 +7,8 @@ public class Pawn extends Piece {
 
 	Type type;
 	
-	public Pawn(int x, int y, Colour c) {
-		super(x,y, c);
+	public Pawn(Colour c) {
+		super(c);
 		this.type = Type.PAWN;
 	}
 	

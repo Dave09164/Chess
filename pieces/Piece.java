@@ -9,18 +9,13 @@ import game.*;
  */
 public abstract class Piece implements Cloneable{
 	
-	int x, y;
 	Colour colour;
 	
 	/**
 	 * Constructor for a Piece object
-	 * @param x 	x location for the object
-	 * @param y		y location for the object
 	 */
-	public Piece(int x, int y, Colour colour) {
+	public Piece( Colour colour) {
 		
-		this.x = x;
-		this.y = y;
 		this.colour = colour;
 			
 	}

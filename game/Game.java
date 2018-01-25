@@ -18,7 +18,10 @@ public class Game {
 	ArrayList<Piece> piecesAr = new ArrayList<Piece>();
 	
 public static void main(String[] args) {
-		
+	
+		Board b = new Board();
+		b.initBoard();
+	
 		Scanner in = new Scanner(System.in);
 		String player1, player2, p1Colour;
 		
@@ -45,26 +48,6 @@ public static void main(String[] args) {
 		}
 		
 		in.close();
-	}
-
-	/**
-	 * Initialising the players pieces to the correct amount
-	 */
-	public void initPieces(Colour c) {
-		
-		piecesAr.add(new Rook(0,0,c));
-		piecesAr.add(new Rook(0,7,c));
-		piecesAr.add(new Knight(0,1,c));
-		piecesAr.add(new Knight(0,6,c));
-		piecesAr.add(new Bishop(0,2,c));
-		piecesAr.add(new Bishop(0,5,c));
-		piecesAr.add(new King(0,3,c));
-		piecesAr.add(new Queen(0,4,c));
-		
-		for(int i = 0; i < 8; i++) {
-			piecesAr.add(new Pawn(1,i,c));
-		}
-				
 	}
 	
 }

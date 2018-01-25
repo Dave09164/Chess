@@ -7,8 +7,8 @@ public class Knight extends Piece {
 
 	Type type;
 	
-	public Knight(int x, int y, Colour c) {
-		super(x,y, c);
+	public Knight(Colour c) {
+		super(c);
 		this.type = Type.KNIGHT;
 	}
 	

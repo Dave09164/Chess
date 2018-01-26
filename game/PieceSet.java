@@ -1,5 +1,6 @@
 package game;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import pieces.*;
@@ -7,7 +8,7 @@ import pieces.*;
 public class PieceSet {
 
 	Colour colour;
-	List<Piece> pieces;
+	List<Piece> pieces = new LinkedList<Piece>();
 	
 	
 	public PieceSet(Colour c) {
@@ -22,20 +23,21 @@ public class PieceSet {
 		King king = new King(c);
 		Queen queen = new Queen(c);
 		
-		for(int i = 0; i < 8; i++) {
-			Pawn pawn = new Pawn(c);
-			pieces.add(pawn);
-		}
-		
 		pieces.add(rook);
 		pieces.add(knight);
 		pieces.add(bishop);
-		pieces.add(king);
 		pieces.add(queen);
-		pieces.add(rook2);
-		pieces.add(knight2);
+		pieces.add(king);
 		pieces.add(bishop2);
+		pieces.add(knight2);
+		pieces.add(rook2);
 		
-	}
+		for(int i = 0; i < 8; i++) {
+			Pawn pawn = new Pawn(c);
+			pieces.add(pawn);
+			
+		}//end for loop
+		
+	}//end constructor
 
-}
+}//end class

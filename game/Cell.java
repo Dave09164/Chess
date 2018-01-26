@@ -10,8 +10,8 @@ import pieces.Piece;
  */
 public class Cell {
 
-	Piece piece;
-	int xPos, yPos;
+	private Piece piece;
+	private int xPos, yPos;
 	
 	public Cell(int x, int y) {
 		xPos = x;
@@ -29,6 +29,17 @@ public class Cell {
 	
 	public int getYPos() {
 		return this.yPos;
+	}
+	
+	public Piece getPiece() {
+		if(this.piece != null) {
+			return this.piece;
+		}
+		return null;
+	}
+	
+	public void addPiece(Piece p) {
+		this.piece = p;
 	}
 
 }

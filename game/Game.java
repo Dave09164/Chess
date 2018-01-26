@@ -1,30 +1,17 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import pieces.Bishop;
-import pieces.King;
-import pieces.Knight;
-import pieces.Pawn;
-import pieces.Piece;
-import pieces.Queen;
-import pieces.Rook;
 
 public class Game {
 	
-	static Player p1;
-	static Player p2;
-	ArrayList<Piece> piecesAr = new ArrayList<Piece>();
-	
 public static void main(String[] args) {
 	
-		Board b = new Board();
-		b.initBoard();
-	
-		Scanner in = new Scanner(System.in);
+		Player p1, p2;
+		Board board;		
 		String player1, player2, p1Colour;
+		Scanner in = new Scanner(System.in);
 		
+		board = new Board();
 		
 		System.out.println("Welcome to Chess Pro Exclusive Amazing 5000\n"
 				+ "\tPlease Enter Player On name: ");
@@ -48,6 +35,7 @@ public static void main(String[] args) {
 		}
 		
 		in.close();
+
 	}
 	
 }

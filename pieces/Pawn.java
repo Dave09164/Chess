@@ -1,12 +1,16 @@
 package pieces;
 
-import game.Colour;
+import java.util.ArrayList;
+
+import game.Cell;
 import game.Type;
+import game.Colour;
 
 public class Pawn extends Piece {
 
-	Type type;
+	private Type type;
 	
+	//Constructor
 	public Pawn(Colour c) {
 		super(c);
 		this.type = Type.PAWN;
@@ -15,48 +19,49 @@ public class Pawn extends Piece {
 	public Type getType() {
 		return this.type;
 	}
-	
+
 	@Override
-	public Colour getColour() {
-		return this.colour;
+	public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
+		
+		possibleMoves.clear();
+		
+		if(board[x][y].getPieceColour() == Colour.WHITE) {
+			//Moving down the board because white pieces will always start at the top of the board
+			if(board[x+1][y].getState() == null) {
+				possibleMoves.add(board[x+1][y]);
+				if(x == 6) {
+					possibleMoves.add(board[x+2][y]);
+				}
+			}
+			
+			//Possible attack moves
+			if((y>0) && (board[x+1][y-1].getState() != null)) possibleMoves.add(board[x+1][y-1]);
+			if((y<7) && (board[x+1][y+1].getState() != null)) possibleMoves.add(board[x+1][y+1]);
+		} else {
+			//Moving up the board because black pieces will always start at the bottom of the board
+			if(board[x-1][y].getState() == null) {
+				possibleMoves.add(board[x-1][y]);
+				if(x == 6) {
+					possibleMoves.add(board[x-2][y]);
+				}
+			}
+			
+			//Possible attack moves
+			if((y>0) && (board[x-1][y-1].getState() != null)) possibleMoves.add(board[x-1][y-1]);
+			if((y<7) && (board[x-1][y+1].getState() != null)) possibleMoves.add(board[x-1][y+1]);
+
+		}//end if-else
+		
+		return possibleMoves;
 	}
-
-
-	@Override
-	public boolean isValidMove(int x, int y) {
-		// TODO Auto-generated method stub
+	
+	public Boolean promoted() {
 		return false;
 	}
+	
+	public Piece promotedTo() {
+		//TODO sort this oot
+		return new Queen(Colour.BLACK);
+	}
 
-
-	@Override
-	public int[][] drawPath() {
-		/**
-		 * A king can only move one space at a time, in any direction.
-		 */
-		return null;
-	}
-	
-	public void setColour(Colour newColour) {
-		super.setColour(newColour);
-	}
-	
-	public void captured() {
-		/**
-		 * This is when another piece takes this piece.
-		 * Should be stored away in case pawn instance brings it back.
-		 */
-	}
-	
-	public void hasCaptured(Piece isCaptured) {
-		/**
-		 * This is when this piece has captured another piece.
-		 * Should definitely think about changing the names of these methods.
-		 */
-		
-		
-	}
-	
-	
-	
 }

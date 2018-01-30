@@ -1,5 +1,6 @@
 package pieces;
 
+import game.Cell;
 import game.Colour;
 import game.Type;
 
@@ -15,26 +16,22 @@ public class Knight extends Piece {
 	public Type getType() {
 		return this.type;
 	}
-	
-	@Override
-	public Colour getColour() {
-		return this.colour;
-	}
-
 
 	@Override
-	public boolean isValidMove(int x, int y) {
+	public Cell[] validMoves(int x, int y) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		Cell[] moves = new Cell[3];
+		return moves;
 	}
 
-
 	@Override
-	public int[][] drawPath() {
+	public Cell[] drawPath() {
 		/**
 		 * A king can only move one space at a time, in any direction.
 		 */
-		return null;
+		Cell[] moves = new Cell[3];
+		return moves;
 	}
 	
 	public void setColour(Colour newColour) {
@@ -56,7 +53,11 @@ public class Knight extends Piece {
 		
 		
 	}
-	
-	
+
+	@Override
+	public Boolean toBeCaptured() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

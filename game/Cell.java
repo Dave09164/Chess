@@ -10,7 +10,7 @@ import pieces.Piece;
  */
 public class Cell {
 
-	private Piece piece;
+	private Piece state;
 	private int xPos, yPos;
 	
 	public Cell(int x, int y) {
@@ -20,7 +20,7 @@ public class Cell {
 	
 	public Cell(int x, int y, Piece piece) {
 		this(x, y);
-		this.piece = piece;
+		this.state = piece;
 	}
 	
 	public int getXPos() {
@@ -31,15 +31,22 @@ public class Cell {
 		return this.yPos;
 	}
 	
-	public Piece getPiece() {
-		if(this.piece != null) {
-			return this.piece;
+	public Piece getState() {
+		if(this.state != null) {
+			return this.state;
 		}
 		return null;
 	}
 	
-	public void addPiece(Piece p) {
-		this.piece = p;
+	public Colour getPieceColour() {
+		if(this.state != null) {
+			return state.getColour();
+		}
+		return null;
+	}
+	
+	public void setState(Piece p) {
+		this.state = p;
 	}
 
 }

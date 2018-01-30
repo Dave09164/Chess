@@ -7,12 +7,9 @@ import pieces.*;
 
 public class PieceSet {
 
-	Colour colour;
-	List<Piece> pieces = new LinkedList<Piece>();
-	
+	private List<Piece> pieces = new LinkedList<Piece>();
 	
 	public PieceSet(Colour c) {
-		colour = c;
 		
 		Rook rook = new Rook(c);
 		Rook rook2 = new Rook(c);
@@ -40,4 +37,8 @@ public class PieceSet {
 		
 	}//end constructor
 
+	public Piece getPiece(int index) {
+		return pieces.get(index);
+	}
+	
 }//end class

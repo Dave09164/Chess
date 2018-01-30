@@ -1,5 +1,7 @@
 package pieces;
 
+import java.util.ArrayList;
+
 import game.*;
 
 /**
@@ -9,12 +11,13 @@ import game.*;
  */
 public abstract class Piece implements Cloneable{
 	
-	Colour colour;
+	private Colour colour;
+	protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();
 	
 	/**
 	 * Constructor for a Piece object
 	 */
-	public Piece( Colour colour) {
+	public Piece(Colour colour) {
 		
 		this.colour = colour;
 			
@@ -24,6 +27,14 @@ public abstract class Piece implements Cloneable{
 		this.colour = newColour;
 	}
 	
+	public Colour getColour() {
+		return this.colour;
+	}
+	
+	//Also may need hasCaptured()
+	public void captured() {
+		
+	}
 	
 	/**
 	 * 
@@ -33,14 +44,7 @@ public abstract class Piece implements Cloneable{
 	 * @return		returns a true if the chosen location is valid
 	 * 				or false if not
 	 */
-	public abstract boolean isValidMove(int x, int y);
-	
-	
-	/**
-	 * 
-	 * @return		Returns a 2 dimensional array of possible locations for valid moves 
-	 */
-	public abstract int[][] drawPath();
+	public abstract ArrayList<Cell> validMoves(Cell[][] board, int x, int y);
 	
 	/**
 	 * To get the type of object, Example: BISHOP, KING, QUEEN
@@ -48,7 +52,4 @@ public abstract class Piece implements Cloneable{
 	 */
 	public abstract Type getType();
 	
-	public abstract Colour getColour();
-	
-
 }

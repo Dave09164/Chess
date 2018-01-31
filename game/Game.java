@@ -105,8 +105,6 @@ public static void main(String[] args) {
 		gui.removeAll();
 		gui.repaint();
 		main.setSize(600, 600);
-		JButton but = new JButton("Tierna Is a smelly Poop Poop and so is Matthew");
-		gui.add(but);
 		
 	}
 	

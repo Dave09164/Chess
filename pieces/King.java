@@ -1,5 +1,7 @@
 package pieces;
 
+import java.util.ArrayList;
+
 import game.*;
 
 public class King extends Piece {
@@ -16,48 +18,12 @@ public class King extends Piece {
 	}
 
 	@Override
-	public Cell[] validMoves(int x, int y) {
-		// TODO Auto-generated method stub
+	public ArrayList validMoves(Cell[][] board, int x, int y) {
 		
-		Cell[] moves = new Cell[3];
-		return moves;
-	}
-
-	@Override
-	public Cell[] drawPath() {
-		/**
-		 * A king can only move one space at a time, in any direction.
-		 */
-		Cell[] moves = new Cell[3];
-		return moves;
-	}
-	
-	public void setColour(Colour newColour) {
-		super.setColour(newColour);
-	}
-	
-	public void captured() {
-		/**
-		 * This is when another piece takes this piece.
-		 * Should be stored away in case pawn instance brings it back.
-		 */
-	}
-	
-	public void hasCaptured(Piece isCaptured) {
-		/**
-		 * This is when this piece has captured another piece.
-		 * Should definitely think about changing the names of these methods.
-		 */
+		possibleMoves.clear();
 		
+		//King moves one space in any direction
 		
+		return possibleMoves;
 	}
-
-	@Override
-	public Boolean toBeCaptured() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
 }

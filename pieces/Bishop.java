@@ -22,44 +22,48 @@ public class Bishop extends Piece {
 	@Override
 	public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
 		
-		int xTop = x, yLeft = y, xBottom = x, yRight = y, count = 0;
+		int xTop = x, yLeft = y, xBottom = x, yRight = y;
 		Boolean upLeft = true, upRight = true, downLeft = true, downRight = true;
 		
 		possibleMoves.clear();
 		
 		//Bishops move diagonally only - any amount of spaces (without obstructions)
-		while(count != 4) {
+		while(upLeft || upRight || downLeft || downRight) {
 			//Checking top left of board for possible moves and captures
-			if((xTop < 7) && (yLeft > 0) && (board[xTop - 1][yLeft - 1].getState() == null) && (upLeft)) {
+			if((upLeft) && (xTop > 0) && (yLeft > 0) && (board[xTop - 1][yLeft - 1].getState() == null)) {
 				possibleMoves.add(board[xTop - 1][yLeft - 1]);
-			} else if(board[xTop - 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
+			} else if((upLeft) && (xTop > 0) && (yLeft > 0) && 
+					board[xTop - 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
 				possibleMoves.add(board[xTop - 1][yLeft - 1]);
-				upLeft = false; count++;
-			} else {upLeft = false; count++;}
+				upLeft = false;
+			} else upLeft = false;
 		
 			//Checking top right of board for possible moves and captures
-			if((xTop < 7) && (yRight < 7) && (board[xTop - 1][yRight + 1].getState() == null) && (upRight)) {
+			if((upRight) && (xTop < 7) && (yRight < 7) && (board[xTop - 1][yRight + 1].getState() == null)) {
 				possibleMoves.add(board[xTop - 1][yRight + 1]);
-			}else if(board[xTop - 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour()){
+			}else if((upRight) && (xTop < 7) && (yRight < 7) && 
+					board[xTop - 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour()){
 				possibleMoves.add(board[xTop - 1][yRight + 1]);
-				upRight = false; count++;
-			} else {upRight = false; count++;}
+				upRight = false;
+			} else upRight = false;
 			
 			//Checking bottom left of board for possible moves and captures
-			if((xBottom > 0) && (yLeft > 0) && (board[xBottom + 1][yLeft - 1].getState() == null) && (downLeft)) {
+			if((downLeft) && (xBottom > 0) && (yLeft > 0) && (board[xBottom + 1][yLeft - 1].getState() == null)) {
 				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
-			}else if(board[xBottom + 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
+			}else if((downLeft) && (xBottom > 0) && (yLeft > 0) &&
+					board[xBottom + 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
 				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
-				downLeft = false; count++;
-			}else {downLeft = false; count++;}
+				downLeft = false;
+			}else downLeft = false;
 			
 			//Checking bottom right of board for possible moves and captures
-			if((xBottom > 0) && (yRight < 7) && (board[xBottom + 1][yRight + 1].getState() == null) && (downRight)) {
+			if((downRight) && (xBottom > 0) && (yRight < 7) && (board[xBottom + 1][yRight + 1].getState() == null)) {
 				possibleMoves.add(board[xBottom + 1][yRight + 1]);
-			}else if(board[xBottom + 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour()){
+			}else if((downRight) && (xBottom > 0) && (yRight < 7) &&
+					(board[xBottom + 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour())){
 				possibleMoves.add(board[xBottom + 1][yRight + 1]);
-				yLeft = 0; count++;
-			} else {downRight = false; count++;}
+				yLeft = 0;
+			} else downRight = false;
 			xTop--; yLeft--; xBottom++; yRight++;
 		}
 		

@@ -1,5 +1,7 @@
 package pieces;
 
+import java.util.ArrayList;
+
 import game.Cell;
 import game.Colour;
 import game.Type;
@@ -18,46 +20,52 @@ public class Knight extends Piece {
 	}
 
 	@Override
-	public Cell[] validMoves(int x, int y) {
-		// TODO Auto-generated method stub
+	public ArrayList validMoves(Cell[][] board, int x, int y) {
 		
-		Cell[] moves = new Cell[3];
-		return moves;
-	}
-
-	@Override
-	public Cell[] drawPath() {
-		/**
-		 * A king can only move one space at a time, in any direction.
-		 */
-		Cell[] moves = new Cell[3];
-		return moves;
-	}
-	
-	public void setColour(Colour newColour) {
-		super.setColour(newColour);
-	}
-	
-	public void captured() {
-		/**
-		 * This is when another piece takes this piece.
-		 * Should be stored away in case pawn instance brings it back.
-		 */
-	}
-	
-	public void hasCaptured(Piece isCaptured) {
-		/**
-		 * This is when this piece has captured another piece.
-		 * Should definitely think about changing the names of these methods.
-		 */
+		possibleMoves.clear();
 		
+		//Knights single move is 2 cells in one vertical or horizontal direction
+		//and one in the opposite direction (not back on itself though)
 		
-	}
-
-	@Override
-	public Boolean toBeCaptured() {
-		// TODO Auto-generated method stub
-		return null;
+		//up left
+		if((x > 1) && (y > 0) && (board[x-2][y-1].getState() == null)) {
+			possibleMoves.add(board[x-2][y-1]);
+		}
+		//up right
+		if((x > 1) && (y < 7) && (board[x-2][y+1].getState() == null)) {
+			possibleMoves.add(board[x-2][y+1]);
+		}
+		
+		//down left
+		if((x < 6) && (y > 0) && (board[x+2][y-1].getState() == null)) {
+			possibleMoves.add(board[x+2][y-1]);
+		}
+		//down right
+		if((x < 6) && (y < 7) && (board[x+2][y+1].getState() == null)) {
+			possibleMoves.add(board[x+2][y+1]);
+		}
+		/*
+		 * TAKE OF FROM HERE!!
+		 */
+		//left up
+		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
+			possibleMoves.add(board[x-2][y-1]);
+		}
+		//left down
+		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
+			possibleMoves.add(board[x-2][y-1]);
+		}
+		
+		//right up
+		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
+			possibleMoves.add(board[x-2][y-1]);
+		}
+		//right down
+		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
+			possibleMoves.add(board[x-2][y-1]);
+		}
+		
+		return possibleMoves;
 	}
 	
 }

@@ -18,11 +18,12 @@ public class King extends Piece {
 	}
 
 	@Override
-	public ArrayList validMoves(Cell[][] board, int x, int y) {
+	public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
 		
 		possibleMoves.clear();
 		
 		//King moves one space in any direction
+		//Also Must check if kings is in check after every move from all pieces.
 		
 		return possibleMoves;
 	}

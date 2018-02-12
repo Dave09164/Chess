@@ -25,7 +25,7 @@ public class Pawn extends Piece {
 		
 		possibleMoves.clear();
 		
-		if(board[x][y].getPieceColour() == Colour.WHITE) {
+		if(this.getColour() == Colour.WHITE) {
 			//Moving down the board because white pieces will always start at the top of the board
 			if(board[x+1][y].getState() == null) {
 				possibleMoves.add(board[x+1][y]);
@@ -35,8 +35,10 @@ public class Pawn extends Piece {
 			}
 			
 			//Possible attack moves
-			if((y>0) && (board[x+1][y-1].getState() != null)) possibleMoves.add(board[x+1][y-1]);
-			if((y<7) && (board[x+1][y+1].getState() != null)) possibleMoves.add(board[x+1][y+1]);
+			if((y>0) && (board[x+1][y-1].getState() != null) &&
+					(board[x+1][y-1].getPieceColour() != this.getColour())) possibleMoves.add(board[x+1][y-1]);
+			if((y<7) && (board[x+1][y+1].getState() != null) &&
+					(board[x+1][y+1].getPieceColour() != this.getColour())) possibleMoves.add(board[x+1][y+1]);
 		} else {
 			//Moving up the board because black pieces will always start at the bottom of the board
 			if(board[x-1][y].getState() == null) {
@@ -47,8 +49,10 @@ public class Pawn extends Piece {
 			}
 			
 			//Possible attack moves
-			if((y>0) && (board[x-1][y-1].getState() != null)) possibleMoves.add(board[x-1][y-1]);
-			if((y<7) && (board[x-1][y+1].getState() != null)) possibleMoves.add(board[x-1][y+1]);
+			if((y>0) && (board[x-1][y-1].getState() != null) &&
+					board[x-1][y-1].getPieceColour() != this.getColour()) possibleMoves.add(board[x-1][y-1]);
+			if((y<7) && (board[x-1][y+1].getState() != null) && 
+					board[x-1][y+1].getPieceColour() != this.getColour()) possibleMoves.add(board[x-1][y+1]);
 
 		}//end if-else
 		

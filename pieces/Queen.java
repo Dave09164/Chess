@@ -18,11 +18,18 @@ public class Queen extends Piece {
 		}
 
 		@Override
-		public ArrayList validMoves(Cell[][] board, int x, int y) {
+		public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
 			
 			possibleMoves.clear();
 			
-			//Queen Moves are a combination of the Rook, Bishop, and King
+			//Queen Moves are a combination of the Rook and Bishop
+			//checking horizontal options
+			Bishop tempBish = new Bishop(board[x][y].getPieceColour());
+			possibleMoves.addAll(tempBish.validMoves(board, x, y));
+			
+			//Checking horizontal and vertical options
+			Rook tempRook = new Rook(board[x][y].getPieceColour());
+			possibleMoves.addAll(tempRook.validMoves(board, x, y));
 			
 			return possibleMoves;
 		}

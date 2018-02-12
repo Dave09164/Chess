@@ -1,4 +1,4 @@
-package pieces;
+ package pieces;
 
 import java.util.ArrayList;
 
@@ -20,52 +20,24 @@ public class Knight extends Piece {
 	}
 
 	@Override
-	public ArrayList validMoves(Cell[][] board, int x, int y) {
+	public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
 		
 		possibleMoves.clear();
 		
 		//Knights single move is 2 cells in one vertical or horizontal direction
 		//and one in the opposite direction (not back on itself though)
-		
-		//up left
-		if((x > 1) && (y > 0) && (board[x-2][y-1].getState() == null)) {
-			possibleMoves.add(board[x-2][y-1]);
-		}
-		//up right
-		if((x > 1) && (y < 7) && (board[x-2][y+1].getState() == null)) {
-			possibleMoves.add(board[x-2][y+1]);
-		}
-		
-		//down left
-		if((x < 6) && (y > 0) && (board[x+2][y-1].getState() == null)) {
-			possibleMoves.add(board[x+2][y-1]);
-		}
-		//down right
-		if((x < 6) && (y < 7) && (board[x+2][y+1].getState() == null)) {
-			possibleMoves.add(board[x+2][y+1]);
-		}
-		/*
-		 * TAKE OF FROM HERE!!
-		 */
-		//left up
-		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
-			possibleMoves.add(board[x-2][y-1]);
-		}
-		//left down
-		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
-			possibleMoves.add(board[x-2][y-1]);
-		}
-		
-		//right up
-		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
-			possibleMoves.add(board[x-2][y-1]);
-		}
-		//right down
-		if((x > 1) && (y > 1) && (board[x-2][y-1].getState() == null)) {
-			possibleMoves.add(board[x-2][y-1]);
-		}
-		
+		//Giving it 8 option when moving.
+		int[] xPos = {x-2, x-2, x-1, x+1, x-1, x+1, x+2, x+2};
+		int[] yPos = {y-1, y+1, y-2, y-2, y+2, y+2, y-1, y+1};
+
+		for(int i = 0; i <= 8; i++) {
+			if(xPos[i] > 0 && xPos[i] < 8 && yPos[i] > 0 && yPos[i] < 8) {
+				if(board[xPos[i]][yPos[i]].getState() == null) {
+					possibleMoves.add(board[xPos[i]][yPos[i]]);
+				} else if(board[xPos[i]][yPos[i]].getPieceColour() != this.getColour())
+					possibleMoves.add(board[xPos[i]][yPos[i]]);
+			}
+		}	
 		return possibleMoves;
 	}
-	
 }

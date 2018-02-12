@@ -33,7 +33,7 @@ public class Rook extends Piece {
 			if((up) && (xTop > 0) && (board[xTop - 1][y].getState() == null)) {
 				possibleMoves.add(board[xTop - 1][y]);
 			} else if((up) && (xTop > 0) &&
-					(board[xTop - 1][y].getPieceColour() != board[x][y].getPieceColour())){
+					(board[xTop - 1][y].getPieceColour() != this.getColour())){
 				//enemy piece in the way. Possible Attack move
 				possibleMoves.add(board[xTop - 1][y]);
 				up = false;
@@ -43,7 +43,7 @@ public class Rook extends Piece {
 			if((right) && (yRight < 7) && (board[x][yRight + 1].getState() == null)) {
 				possibleMoves.add(board[x][yRight + 1]);
 			}else if((right) && (yRight < 7) &&
-					board[x][yRight + 1].getPieceColour() != board[x][y].getPieceColour()){
+					board[x][yRight + 1].getPieceColour() != this.getColour()){
 				//Enemy piece in the way. Possible Attack move
 				possibleMoves.add(board[x][yRight + 1]);
 				right = false;
@@ -53,7 +53,7 @@ public class Rook extends Piece {
 			if((down) && (xBottom < 7) && (board[xBottom + 1][y].getState() == null)) {
 				possibleMoves.add(board[xBottom + 1][y]);
 			}else if((down) && (xBottom < 7) &&
-					board[xBottom + 1][y].getPieceColour() != board[x][y].getPieceColour()){
+					board[xBottom + 1][y].getPieceColour() != this.getColour()){
 				possibleMoves.add(board[xBottom + 1][y]);
 				down = false;
 			}else down = false;
@@ -62,7 +62,7 @@ public class Rook extends Piece {
 			if((left) && (yLeft > 0) && (board[x][yLeft - 1].getState() == null)) {
 				possibleMoves.add(board[x][yLeft - 1]);
 			}else if((left) && (yLeft > 0) && 
-					board[x][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
+					board[x][yLeft - 1].getPieceColour() != this.getColour()){
 				possibleMoves.add(board[x][yLeft - 1]);
 				left = false;
 			} else left = false;

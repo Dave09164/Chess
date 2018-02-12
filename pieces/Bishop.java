@@ -33,7 +33,7 @@ public class Bishop extends Piece {
 			if((upLeft) && (xTop > 0) && (yLeft > 0) && (board[xTop - 1][yLeft - 1].getState() == null)) {
 				possibleMoves.add(board[xTop - 1][yLeft - 1]);
 			} else if((upLeft) && (xTop > 0) && (yLeft > 0) && 
-					board[xTop - 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
+					board[xTop - 1][yLeft - 1].getPieceColour() != this.getColour()){
 				possibleMoves.add(board[xTop - 1][yLeft - 1]);
 				upLeft = false;
 			} else upLeft = false;
@@ -42,7 +42,7 @@ public class Bishop extends Piece {
 			if((upRight) && (xTop < 7) && (yRight < 7) && (board[xTop - 1][yRight + 1].getState() == null)) {
 				possibleMoves.add(board[xTop - 1][yRight + 1]);
 			}else if((upRight) && (xTop < 7) && (yRight < 7) && 
-					board[xTop - 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour()){
+					board[xTop - 1][yRight + 1].getPieceColour() != this.getColour()){
 				possibleMoves.add(board[xTop - 1][yRight + 1]);
 				upRight = false;
 			} else upRight = false;
@@ -51,7 +51,7 @@ public class Bishop extends Piece {
 			if((downLeft) && (xBottom > 0) && (yLeft > 0) && (board[xBottom + 1][yLeft - 1].getState() == null)) {
 				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
 			}else if((downLeft) && (xBottom > 0) && (yLeft > 0) &&
-					board[xBottom + 1][yLeft - 1].getPieceColour() != board[x][y].getPieceColour()){
+					board[xBottom + 1][yLeft - 1].getPieceColour() != this.getColour()){
 				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
 				downLeft = false;
 			}else downLeft = false;
@@ -60,7 +60,7 @@ public class Bishop extends Piece {
 			if((downRight) && (xBottom > 0) && (yRight < 7) && (board[xBottom + 1][yRight + 1].getState() == null)) {
 				possibleMoves.add(board[xBottom + 1][yRight + 1]);
 			}else if((downRight) && (xBottom > 0) && (yRight < 7) &&
-					(board[xBottom + 1][yRight + 1].getPieceColour() != board[x][y].getPieceColour())){
+					(board[xBottom + 1][yRight + 1].getPieceColour() != this.getColour())){
 				possibleMoves.add(board[xBottom + 1][yRight + 1]);
 				yLeft = 0;
 			} else downRight = false;

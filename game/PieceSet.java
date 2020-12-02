@@ -9,6 +9,8 @@ public class PieceSet {
 
 	private List<Piece> pieces = new LinkedList<Piece>();
 	
+	public void validMoves() {}
+	
 	public PieceSet(Colour c) {
 		
 		Rook rook = new Rook(c);
@@ -31,14 +33,24 @@ public class PieceSet {
 		
 		for(int i = 0; i < 8; i++) {
 			Pawn pawn = new Pawn(c);
-			pieces.add(pawn);
-			
+			pieces.add(pawn);	
 		}//end for loop
-		
 	}//end constructor
 
 	public Piece getPiece(int index) {
 		return pieces.get(index);
 	}
 	
+	/*public boolean movePiece(int index, Colour color) {
+		if(pieces.get(index).getColour() != color) {
+			return false;
+		}
+		
+		return false;
+	}*/
+	
+	public int getSize() {
+		return this.pieces.size();
+	}
+		
 }//end class

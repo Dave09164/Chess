@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 import pieces.Piece;
 
 /**
@@ -29,6 +31,17 @@ public class Cell {
 	
 	public int getYPos() {
 		return this.yPos;
+	}
+	
+	public String getCellPos() {
+		return this.xPos + " : " + this.yPos;
+	}
+	
+	public ArrayList<Cell> getValidMoves(Board b){ 
+		if(this.state != null) {
+			return this.state.validMoves(b, this.xPos, this.yPos);
+		}
+		return null;
 	}
 	
 	public Piece getState() {

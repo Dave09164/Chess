@@ -2,6 +2,7 @@ package pieces;
 
 import java.util.ArrayList;
 
+import game.Board;
 import game.Cell;
 import game.Colour;
 import game.Type;
@@ -17,57 +18,73 @@ public class Bishop extends Piece {
 	
 	public Type getType() {
 		return this.type;
-	}
+	} 
 
 	@Override
-	public ArrayList<Cell> validMoves(Cell[][] board, int x, int y) {
+	public ArrayList<Cell> validMoves(Board board, int x, int y) {
 		
-		int xTop = x, yLeft = y, xBottom = x, yRight = y;
-		Boolean upLeft = true, upRight = true, downLeft = true, downRight = true;
+		int xTemp = x, yTemp = y;
+		Boolean check = true;
 		
 		possibleMoves.clear();
 		
-		//Bishops move diagonally only - any amount of spaces (without obstructions)
-		while(upLeft || upRight || downLeft || downRight) {
+		while(check) {
 			//Checking top left of board for possible moves and captures
-			if((upLeft) && (xTop > 0) && (yLeft > 0) && (board[xTop - 1][yLeft - 1].getState() == null)) {
-				possibleMoves.add(board[xTop - 1][yLeft - 1]);
-			} else if((upLeft) && (xTop > 0) && (yLeft > 0) && 
-					board[xTop - 1][yLeft - 1].getPieceColour() != this.getColour()){
-				possibleMoves.add(board[xTop - 1][yLeft - 1]);
-				upLeft = false;
-			} else upLeft = false;
-		
-			//Checking top right of board for possible moves and captures
-			if((upRight) && (xTop < 7) && (yRight < 7) && (board[xTop - 1][yRight + 1].getState() == null)) {
-				possibleMoves.add(board[xTop - 1][yRight + 1]);
-			}else if((upRight) && (xTop < 7) && (yRight < 7) && 
-					board[xTop - 1][yRight + 1].getPieceColour() != this.getColour()){
-				possibleMoves.add(board[xTop - 1][yRight + 1]);
-				upRight = false;
-			} else upRight = false;
-			
-			//Checking bottom left of board for possible moves and captures
-			if((downLeft) && (xBottom > 0) && (yLeft > 0) && (board[xBottom + 1][yLeft - 1].getState() == null)) {
-				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
-			}else if((downLeft) && (xBottom > 0) && (yLeft > 0) &&
-					board[xBottom + 1][yLeft - 1].getPieceColour() != this.getColour()){
-				possibleMoves.add(board[xBottom + 1][yLeft - 1]);
-				downLeft = false;
-			}else downLeft = false;
-			
-			//Checking bottom right of board for possible moves and captures
-			if((downRight) && (xBottom > 0) && (yRight < 7) && (board[xBottom + 1][yRight + 1].getState() == null)) {
-				possibleMoves.add(board[xBottom + 1][yRight + 1]);
-			}else if((downRight) && (xBottom > 0) && (yRight < 7) &&
-					(board[xBottom + 1][yRight + 1].getPieceColour() != this.getColour())){
-				possibleMoves.add(board[xBottom + 1][yRight + 1]);
-				yLeft = 0;
-			} else downRight = false;
-			xTop--; yLeft--; xBottom++; yRight++;
+			if((xTemp > 0) && (yTemp > 0)){
+				if(board.getBoard(xTemp-1, yTemp-1).getState() == null) {
+					possibleMoves.add(board.getBoard(xTemp-1, yTemp-1));
+				} else if(board.getBoard(xTemp-1, yTemp-1).getPieceColour() != this.getColour()){
+					possibleMoves.add(board.getBoard(xTemp-1, yTemp-1));
+					check = false;
+				} else check = false;
+			} else check = false;
+			xTemp--; yTemp--;
 		}
 		
+		xTemp = x; yTemp = y; check = true;
+		
+		while(check) {
+			//Checking top right of board for possible moves and captures
+			if((xTemp > 0) && (yTemp < 7)){
+				if(board.getBoard(xTemp-1, yTemp+1).getState() == null) {
+					possibleMoves.add(board.getBoard(xTemp-1, yTemp+1));
+				} else if(board.getBoard(xTemp-1, yTemp+1).getPieceColour() != this.getColour()){
+					possibleMoves.add(board.getBoard(xTemp-1, yTemp+1));
+					check = false;
+				} else check = false;
+			} else check = false;
+			xTemp--; yTemp++;
+		}
+		
+		xTemp = x; yTemp = y; check = true;
+		
+		while(check) {
+			//Checking bottom left of board for possible moves and captures
+			if((xTemp < 7) && (yTemp > 0)){
+				if(board.getBoard(xTemp+1, yTemp-1).getState() == null) {
+					possibleMoves.add(board.getBoard(xTemp+1, yTemp-1));
+				} else if(board.getBoard(xTemp+1, yTemp-1).getPieceColour() != this.getColour()){
+					possibleMoves.add(board.getBoard(xTemp+1, yTemp-1));
+					check = false;
+				} else check = false;
+			} else check = false;
+			xTemp++; yTemp--;
+		}
+		
+		xTemp = x; yTemp = y; check = true;
+				
+		while(check) {
+			//Checking bottom right of board for possible moves and captures
+			if((xTemp < 7) && (yTemp < 7)){
+				if(board.getBoard(xTemp+1, yTemp+1).getState() == null) {
+					possibleMoves.add(board.getBoard(xTemp+1, yTemp+1));
+				} else if(board.getBoard(xTemp+1, yTemp+1).getPieceColour() != this.getColour()){
+					possibleMoves.add(board.getBoard(xTemp+1, yTemp+1));
+					check = false;
+				} else check = false;
+			} else check = false;
+			xTemp++; yTemp++;
+		}		
 		return possibleMoves;
 	}
-	
 }

@@ -12,6 +12,11 @@ import game.*;
 public abstract class Piece implements Cloneable{
 	
 	private Colour colour;
+	private Boolean level;
+	private int movesCount = 0;
+	private int captureCount = 0;
+	//private Boolean captured = false;
+	
 	protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();
 	
 	/**
@@ -20,6 +25,7 @@ public abstract class Piece implements Cloneable{
 	public Piece(Colour colour) {
 		
 		this.colour = colour;
+		this.level = false;
 			
 	}
 	
@@ -31,10 +37,41 @@ public abstract class Piece implements Cloneable{
 		return this.colour;
 	}
 	
-	//Also may need hasCaptured()
-	public void captured() {
-		
+	public void promote() {
+		this.level = true;
 	}
+	
+	public Boolean hasPromotion() {
+		return this.level;
+	}
+	
+	public int getMovesCount() {
+		return this.movesCount;
+	}
+	
+	public void makeMoveCounter() {
+		this.movesCount++;
+	}
+	
+	public int getCaptureCount() {
+		return this.captureCount;
+	}
+	
+	public void addCapture() {
+		this.captureCount++;
+	}
+	
+	public Piece promoteTo(ArrayList<Piece> captures) {
+		return null;
+	}
+		
+	/*public Boolean isCaptured() {
+		return this.captured;
+	}
+	
+	public void setCaptured(Boolean captured) {
+		this.captured = captured;
+	}*/
 	
 	/**
 	 * 
@@ -44,12 +81,11 @@ public abstract class Piece implements Cloneable{
 	 * @return		returns a true if the chosen location is valid
 	 * 				or false if not
 	 */
-	public abstract ArrayList<Cell> validMoves(Cell[][] board, int x, int y);
+	public abstract ArrayList<Cell> validMoves(Board board, int x, int y);
 	
 	/**
 	 * To get the type of object, Example: BISHOP, KING, QUEEN
 	 * @return		Returns the type of Piece object
 	 */
 	public abstract Type getType();
-	
 }

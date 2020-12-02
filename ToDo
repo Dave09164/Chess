@@ -1,0 +1,51 @@
+Use this file at the end of every session to remember what you were working on. 
+
+05/10/2020
+	I have implemented a makeMove function in the Board class. 
+	
+	Next time I will need to ensure every piece follow the correct rules of chess
+	from the validMoves function. 
+	
+	
+06/10/2020
+	^ Did not do previous days end task
+	 
+	Updated the move functionality to allow for user input to determine the move.
+	
+	Still need to ensure every piece follows the correct rules of chess.
+	By updating validMoves function for each piece type/object. 
+	
+07/10/2020
+	Done some stuff but didn't write anything here because had to go get tested for
+	the rona. SO I DID. Test results came back negative - no idea how but oh well.
+	It's only been one day and I already forget what I have done lol. 
+		- 08/10/2020
+	 
+08/10/2020
+	Improved the readability of the code and the piece movement functionality. 
+	Focusing on pawn movement. 
+		-Can move correctly and attack correctly
+		
+	Pawn seems to have all functionality. 
+		-Moving, Attacking, Promotions etc.
+	Storing captured pieces in an ArrayList.
+	General game functionality working as expected.
+	
+	Focus on Bishop, Knight, Rook, and Queen tomorrow
+	
+	Scanner class is a piece of shit.
+	
+09/10/2020
+	Movement/Capturing for all pieces is working as expected except for King.
+	Need to work out how king will be marked as CheckMate.
+	Some logic already done. Needs finished. 
+	
+	Storing players and game needs to be implemented. 
+	
+	
+	
+	
+	
+	
+	
+	

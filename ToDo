@@ -42,9 +42,22 @@ Use this file at the end of every session to remember what you were working on.
 	
 	Storing players and game needs to be implemented. 
 	
+19/01/2021
+	Back at it. Reviewing how everything works again. Corrected the movement input
+	it is not letter number rather now number letter. Because that's absurd. 
 	
+	Have added a object Observer. The purpose of the observer is to ensure the 
+	king does not move into a dangerous file/rank. Functionality does not end 
+	with that. Other uses will be implemented in the future. 
 	
+	Once the dangerous Cells can be identified. The manoeuvre 'Castling' can be
+	implemented. 'En-Passant' is still to be implemented. 
 	
+	Problem with current Observer function 'getAttackedRanks' is that it is
+	returning all possible moves from the opposing side. Including Pawns, 
+	even though all Pawns movements are not attacking movements. Pawn functions
+	will need reviewed of a new function 'validCaptureMoves' will need
+	created.
 	
 	
 	

@@ -28,21 +28,10 @@ public class Pawn extends Piece {
 		possibleMoves.clear();
 		
 		if(this.getColour() == Colour.WHITE) {
-			if(!this.hasPromotion()) {
-				if(x!=7) downMoves(board, x, y);
-			} else {
-				if(x!=7) downMoves(board, x, y);
-				if(x!=0) upMoves(board, x, y);
-			}			
+			if(x!=7) downMoves(board, x, y);			
 		} else {
 			//Piece is Black
-			if(!this.hasPromotion()) {
-				if(x!=0) upMoves(board, x, y);
-			} else {
-				if(x!=7) downMoves(board, x, y);
-				if(x!=0) upMoves(board, x, y);
-			}	
-			
+			if(x!=0) upMoves(board, x, y);
 		}//end if-else
 		
 		return possibleMoves;
@@ -89,14 +78,15 @@ public class Pawn extends Piece {
 	public Piece promoteTo(ArrayList<Piece> captures) {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
-		System.out.println("Captured Pieces: \n");
+		
+		/* System.out.println("Captured Pieces: \n");
 		for(Piece p:captures) {
 			if(p.getColour() == this.getColour()) {
 				System.out.println(p.getType());
 			}
-		}
+		}*/
 		
-		System.out.println("Please select a piece: ");
+		System.out.println("Please select a piece: (Q,R,K,B)");
 		String choice = in.nextLine();
 		
 		
@@ -110,7 +100,6 @@ public class Pawn extends Piece {
 			case 'B':
 				return new Rook(this.getColour());
 			default:
-				
 				System.out.println("Woops.");
 		}
 		

@@ -86,12 +86,13 @@ public class Board {
 					}
 				}
 			}
-			catch(Exception e) {System.out.print("farts " + e);}
+			catch(Exception e) {System.out.print("farts " + e);
+			}
 		}
 		return makeMove(converted[0], converted[1], converted[2], converted[3], colour); 
 	}
 	
-	public boolean makeMove(int fromX, int fromY, int toX, int toY, Colour colour) {
+	public boolean makeMove(int fromY, int fromX, int toY, int toX, Colour colour) {
 		
 		try {
 			if(board[fromX][fromY].getState().getColour() == colour) {
@@ -99,6 +100,7 @@ public class Board {
 				ArrayList<Cell> possibleMoves = board[fromX][fromY].getValidMoves(this);
 				
 				for(Cell c : possibleMoves) {
+					
 					if(c.getXPos() == toX && c.getYPos() == toY) {
 						initiateMove(fromX, fromY, toX, toY);
 					return true;

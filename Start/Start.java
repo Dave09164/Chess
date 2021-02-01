@@ -13,10 +13,9 @@ public class Start {
 		Boolean gameEnd = false;
 		Player[] players = new Player[2];
 		
-		System.out.println("Whats the crack ye wee phroot? Wana play chess? Do ye aye?"
-				+ "\nAll right. Whats your name en?");
+		System.out.println("What is your name?");
 		String name = user.nextLine();
-		System.out.println("Alright " + name + " you are the white pieces.");
+		System.out.println("Ok, " + name + ", you are the white pieces.");
 		players[0] = new Player(name, Colour.WHITE);
 		
 		System.out.println("Sweet. Nai. Who's player 2 en?");
